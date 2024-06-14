@@ -1,10 +1,10 @@
 
 
+import { useState } from "react";
 import Buttons from "../Components/ui/Buttons"
+import Model from "../Components/ui/Model";
 
 import UseAuthanticationHook from "../assets/Hooks/UseAuthanticationHook"
-
-
 
 
 function Todos() {
@@ -18,8 +18,11 @@ function Todos() {
   if (isPending) return 'Loading...'
 
   if (error) return 'An error has occurred: ' + error.message
-;
   
+  let [isOpen, setIsOpen] = useState(false)
+
+  function EditeOpen() {
+    setIsOpen(true)}
 
   return (
   
@@ -37,7 +40,7 @@ function Todos() {
                   <h2 className="card-title">{todo.title}</h2>
                   <p>{todo.description}</p>
                   <div className="flex space-x-2">
-                    <Buttons >Edite</Buttons>
+                    <Buttons onClick={EditeOpen} >Edite</Buttons>
                     <Buttons >Delete</Buttons>
                     
                   </div>
@@ -52,6 +55,8 @@ function Todos() {
        
        </>
             :"No Todo Found"}
+
+            <Model isOpen={isOpen} setIsOpen={setIsOpen}/>
     </div>
   )
 }

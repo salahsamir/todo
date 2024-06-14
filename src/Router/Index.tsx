@@ -12,7 +12,7 @@ import PageNotFound from "../Pages/PagesNotFound";
 export let router = createBrowserRouter(
     createRoutesFromElements(
         <>
-            <Route path="/" element={<Layout/>}  errorElement={<ErrorHandler />}>
+            <Route path="/" element={<Layout/>} errorElement={<ErrorHandler />}  >
                 <Route index element={<ProductRoute  children={<Index />} />} />
                 <Route path="login" element={<Login />} />
                 <Route path="registar" element={<Registar />} />

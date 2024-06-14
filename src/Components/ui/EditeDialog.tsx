@@ -2,11 +2,10 @@ import { Dialog, DialogPanel, DialogTitle, Transition, TransitionChild } from '@
 import Buttons from './Buttons'
 import Inputs from './Inputs'
 import { ChangeEvent, useState, useEffect } from 'react'
-import dataInput from '../Data/AddProduct'
-import ValidateError from '../Utitls/Error'
+
 import Error from './Error'
 import Ball from './Ball'
-import Colors from '../Data/Color'
+
 import Select from './Select'
 import toast from 'react-hot-toast'
 import IProduct from '../Interfaces/ProductinterFace'

@@ -4,7 +4,7 @@ import Buttons from './Buttons'
 import Inputs from './Inputs'
 
 import { ChangeEvent, useState } from 'react'
-import dataInput from '../Data/AddProduct'
+import dataInput from '../Data/EditeTodo'
 import ValidateError from '../Utitls/Error'
 import Error from './Error'
 import Ball from './Ball'
