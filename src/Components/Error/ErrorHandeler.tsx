@@ -7,7 +7,6 @@ interface IProps {
 
 const ErrorHandler = ({ statusCode = 500, title = "Server Error" }: IProps) => {
   const { pathname } = useLocation();
-
   return (
     <div className="fixed inset-0 flex items-center justify-center p-5 w-full">
       <div className="text-center">

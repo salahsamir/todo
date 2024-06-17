@@ -7,9 +7,10 @@ interface IProduct extends React.InputHTMLAttributes<HTMLInputElement> {
   placeholder: string;
   type: string;
   register: any;
+  value?:string
 }
 
-export default function Inputs({ label, name, id, placeholder, type, register, ...rest }: IProduct) {
+export default function Inputs({ label, name, id, placeholder, type, value, register, ...rest }: IProduct) {
   return (
     <div className="w-full max-w-md px-1 py-1">
       <Field>
@@ -19,6 +20,7 @@ export default function Inputs({ label, name, id, placeholder, type, register, .
         <div className="mt-2">
           <Input
             name={name}
+            value={value}
             id={id}
             type={type}
             placeholder={placeholder}
