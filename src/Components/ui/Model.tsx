@@ -24,8 +24,9 @@ interface IModel {
     setIsOpen:()=>void,
     todo:ITodo,
     setTodo:()=>void,
+    setQueryVersion:()=>void
 }
-function Model({isOpen,setIsOpen,todo,setTodo}:IModel) {
+function Model({isOpen,setIsOpen,todo,setTodo,setQueryVersion}:IModel) {
   
 
   let[isLoading,setIsLoading]=useState(false)
@@ -62,6 +63,7 @@ function Model({isOpen,setIsOpen,todo,setTodo}:IModel) {
       }
     }).then(res=>{
      if(res.status===200){
+      setQueryVersion(prev=>prev+1)
        toast.success('update successfully', {
          style: {
            border: '1px solid #13204a',

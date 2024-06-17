@@ -25,9 +25,9 @@ interface ITodo {
 interface IModel {
     isOpen: boolean
     setIsOpen:()=>void,
-   
+    setQueryVersion:()=>void
 }
-function  PostModel({isOpen,setIsOpen}:IModel) {
+function  PostModel({isOpen,setIsOpen,setQueryVersion}:IModel) {
   
   
   let[isLoading,setIsLoading]=useState(false)
@@ -65,6 +65,7 @@ function  PostModel({isOpen,setIsOpen}:IModel) {
       }
     }).then(res=>{
      if(res.status===200){
+      setQueryVersion(prev=>prev+1)
        toast.success('Added successfully', {
          style: {
            border: '1px solid #13204a',

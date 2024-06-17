@@ -26,9 +26,9 @@ function Todos() {
   let [isOpenDelete, setIsOpenDelete] = useState(false)
   let [isOpenPost, setIsOpenPost] = useState(false)
   let [IdDelete, setIdDelete] = useState('')
+  let [queryVersion,setQueryVersion]=useState(1)
 
-
-  const {isPending, error, data}=UseAuthanticationHook({queryKey:['todos',`${todo.id}`,`${IdDelete}`],url:"/users/me?populate=todos",config:{
+  const {isPending, error, data}=UseAuthanticationHook({queryKey:['todos',`${queryVersion}`],url:"/users/me?populate=todos",config:{
     headers:{
       Authorization:`Bearer ${localStorage.getItem('token')}`
     }
@@ -71,7 +71,7 @@ function Todos() {
         <div className=" ">
           {data.todos.map((todo: any) => {
             return (
-              <div key={todo.id} className=" bg-base-100 shadow-xl p-3 w-3/4 mx-auto my-2 even:bg-slate-200 rounded-lg hover:scale-105">
+              <div key={todo.id} className=" bg-base-100 shadow-xl p-3 w-3/4 mx-auto my-2 even:bg-slate-200 rounded-lg ">
                 <div className="flex justify-between   items-center ">
                  <div className="flex flex-col space-y-2">
                  <h2 className="text-3xl text-blue-800 font-bold">{todo.title}</h2>
@@ -93,9 +93,9 @@ function Todos() {
        
        </>)
             :("No Todo Found")}
-             <PostTodo isOpen={isOpenPost} setIsOpen={setIsOpenPost} t/>
-            <Model isOpen={isOpen} setIsOpen={setIsOpen} todo={todo} setTodo={setTodo}/>
-            <ModelDelete isOpen={isOpenDelete} setIsOpen={setIsOpenDelete} id={IdDelete} setIdDelete={setIdDelete} />
+             <PostTodo isOpen={isOpenPost} setIsOpen={setIsOpenPost} setQueryVersion={setQueryVersion} />
+            <Model isOpen={isOpen} setIsOpen={setIsOpen} todo={todo} setTodo={setTodo} setQueryVersion={setQueryVersion}/>
+            <ModelDelete isOpen={isOpenDelete} setIsOpen={setIsOpenDelete} id={IdDelete} setIdDelete={setIdDelete} setQueryVersion={setQueryVersion} />
     </div>
   )
 }

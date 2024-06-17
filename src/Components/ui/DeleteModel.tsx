@@ -10,9 +10,10 @@ interface IAdd {
   setIsOpen:()=>void
   id: string
   setIdDelete:()=>void
+  setQueryVersion:()=>void
 }
 
-export default function ModelDelete({  isOpen,setIsOpen , id,setIdDelete }: IAdd) {
+export default function ModelDelete({  isOpen,setIsOpen , id,setIdDelete,setQueryVersion }: IAdd) {
    
 
  let [isLoading, setIsLoading] = useState<Boolean>(false)
@@ -28,6 +29,7 @@ export default function ModelDelete({  isOpen,setIsOpen , id,setIdDelete }: IAdd
       }
     }).then(res=>{
      if(res.status===200){
+      setQueryVersion(prev=>prev+1)
        toast.success('Deleted successfully', {
          style: {
            border: '1px solid #13204a',
