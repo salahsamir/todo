@@ -56,7 +56,8 @@ function Model({isOpen,setIsOpen,todo,setTodo,setQueryVersion}:IModel) {
     await Axiosinstance.put(`/todos/${ele.id}`,{
       data:{
       title:ele.title,
-      description:ele.description}
+      description:ele.description,
+      user:[localStorage.getItem('user')]}
     },{
       headers:{
         Authorization:`Bearer ${localStorage.getItem('token')}`

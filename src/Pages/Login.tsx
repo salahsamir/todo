@@ -34,6 +34,7 @@ export default function Login() {
     setLoading(true)
    await Axiosinstance.post(`/auth/local`,data).then(res=>{
      localStorage.setItem('token',res.data.jwt)
+     localStorage.setItem('user',res.data.user.id)
     if(res.status===200){
       toast.success('Login successfully', {
         style: {

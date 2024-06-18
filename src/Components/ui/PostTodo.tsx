@@ -58,13 +58,15 @@ function  PostModel({isOpen,setIsOpen,setQueryVersion}:IModel) {
     await Axiosinstance.post(`/todos`,{
       data:{
       title:ele.title,
-      description:ele.description}
+      description:ele.description,
+    user:[localStorage.getItem('user')]}
     },{
       headers:{
         Authorization:`Bearer ${localStorage.getItem('token')}`
       }
     }).then(res=>{
      if(res.status===200){
+      
       setQueryVersion(prev=>prev+1)
        toast.success('Added successfully', {
          style: {

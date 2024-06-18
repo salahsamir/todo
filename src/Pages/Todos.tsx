@@ -1,7 +1,7 @@
 
 
 import { useState } from "react";
-import Buttons from "../Components/ui/Buttons"
+
 import Model from "../Components/ui/Model";
 
 import UseAuthanticationHook from "../assets/Hooks/UseAuthanticationHook"
@@ -9,7 +9,8 @@ import Button from "../Components/ui/Button";
 import ModelDelete from "../Components/ui/DeleteModel";
 import { Skelton } from "../Components/ui/Skelton";
 import PostTodo from "../Components/ui/PostTodo";
-
+import Axiosinstance from "../Config/AxiosConfig";
+import { faker } from '@faker-js/faker';
 interface ITodo {
   title: string
   description: string
@@ -34,6 +35,26 @@ function Todos() {
     }
   }})
  
+  let generateTodos=async()=>{
+    for (let i = 0; i <10; i++) {
+      await Axiosinstance.post(`/todos`,{
+        data:{
+        title:faker.word.words(5),
+        description:faker.word.words(20),
+      user:[localStorage.getItem('user')]}
+      },{
+        headers:{
+          Authorization:`Bearer ${localStorage.getItem('token')}`
+        }
+      }).then(res=>{
+       console.log(res)
+      })
+      .catch(err=>{
+           console.log(err)
+      })
+      
+    }
+  }
 
   function DeleteOpen(id:string) {
     setIsOpenDelete(true)
@@ -61,7 +82,9 @@ function Todos() {
     <div>
       <div className="flex justify-between items-center">
        <h2 className="text-5xl text-blue-900 font-bold  my-2">Your Todos</h2>
+       <Button onClick={()=>{generateTodos()}}  className="w-fit  my-5 "   >Generate Todos</Button>
        <Button onClick={()=>{setIsOpenPost(true)}}  className="w-fit  my-5 " variant={"outline"}  >Post Todo</Button>
+
        </div>
 
             {data?.todos?.length?
