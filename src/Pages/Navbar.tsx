@@ -75,7 +75,7 @@ export default function Navbar() {
                         )}
                       
                       >
-                       Profile
+                       Todos
                       </NavLink>
                          <NavLink
                          onClick={() => Logout()}
